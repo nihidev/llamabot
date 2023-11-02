@@ -3,13 +3,14 @@ from llama_index import VectorStoreIndex, ServiceContext, Document
 from llama_index.llms import OpenAI
 import openai
 from llama_index import SimpleDirectoryReader
+import os
 
 
-openai.api_key = st.secrets.openai_key
+os.environ['OPENAI_API_KEY'] = st.secrets['OPENAI_API_KEY']
 
 st.title("Chat with the Streamlit docs, powered by LlamaIndex 💬🦙")
          
-if "messages" not in st.session_state.keys(): # Initialize the chat messages history
+if "messages" not in st.session_state.keys(): 
     st.session_state.messages = [
         {"role": "assistant", "content": "Ask me a question about Finance"}
     ]
