@@ -21,7 +21,7 @@ def load_data():
         reader = SimpleDirectoryReader(input_dir="./data", recursive=True)
         docs = reader.load_data()
         service_context = ServiceContext.from_defaults(llm=OpenAI(model="gpt-4", temperature=0, 
-                                                                   system_prompt="You are an expert on Finance and your job is to answer technical questions. Assume that all questions are related to Finance. Keep your answers technical and based on facts – do not hallucinate features. Always give the source of the answer. The Final Output Format should be like  - {ANSWER} - {SOURCE} "))
+                                                                   system_prompt="You are an expert on Finance and your job is to answer technical questions. Assume that all questions are related to Finance. Keep your answers technical and based on facts – do not hallucinate features."))
         index = VectorStoreIndex.from_documents(docs, service_context=service_context)
         return index
 
